@@ -5,6 +5,9 @@
     box-sizing: border-box;
 }
 
+ul {
+    list-style: none;
+}
 /* #endregion common */
 
 /* #region header */
@@ -50,6 +53,10 @@ main {
 
                     p {
                         color: blue;
+                    }
+
+                    h2 {
+                        margin: 1rem;
                     }
                 }
             }
