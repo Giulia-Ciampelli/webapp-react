@@ -1,14 +1,16 @@
-.cardTop {
+.card {
 
-    p {
-        color: blue;
-    }
-}
+    .cardBottom {
 
-.cardBottom {
-    background-color: yellowgreen;
+        h2 {
+            margin-top: 1rem;
+        }
 
-    h2 {
-        margin: 1rem 0;
+        ul {
+
+            li {
+                margin: 1.5rem 0;
+            }
+        }
     }
 }

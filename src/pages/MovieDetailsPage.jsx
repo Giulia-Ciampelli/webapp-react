@@ -27,10 +27,10 @@ export default function MovieDetailsPage() {
         <>
             <div className="container">
                 <h1>
-                    Single movie with its reviews
+                    {movieDetails.title}
                 </h1>
                 <div className="row">
-                    <div className="card">
+                    <div className={style.card}>
                         <div className={style.cardTop}>
                             <p>
                                 Title: {movieDetails.title}
@@ -65,13 +65,15 @@ export default function MovieDetailsPage() {
                                     {movieDetails.reviews.map((review) => (
                                         <li key={review.id}>
                                             <p>
-                                                {review.name} says:
+                                                <strong>
+                                                    {review.name} says:
+                                                </strong>
                                             </p>
                                             <p>
                                                 {review.text}
                                             </p>
                                             <p>
-                                                Vote: {review.vote}
+                                                Vote: <strong>{review.vote}</strong>
                                             </p>
                                         </li>
                                     ))}

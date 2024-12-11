@@ -3,10 +3,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Molengo', sans-serif;
+    color: var(--dark-colour);
 }
 
 ul {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --pearl-colour: #E7DFC6;
+    --blue-colour: #4A6F8C;
+    --moss-colour: #556D36;
+    --dark-colour: #131112;
 }
 
 /* #endregion common */
@@ -14,12 +27,15 @@ ul {
 /* #region header */
 header {
     padding: 1rem;
-    background-color: azure;
+    background-color: var(--moss-colour);
 
     nav {
+        display: flex;
+        justify-content: flex-end;
 
         a {
-            text-decoration: none;
+            padding: 0 1rem;
+            color: var(--pearl-colour);
         }
     }
 }
@@ -29,13 +45,15 @@ header {
 /* #region main */
 main {
     min-height: 90vh;
+    padding: 2rem 0;
+    background-color: var(--pearl-colour);
 
     .container {
         width: 90%;
         margin: auto;
 
         h1 {
-            margin: 2rem 0;
+            margin-bottom: 2rem;
         }
 
         .row {
@@ -49,10 +67,10 @@ main {
 
                 .card {
                     padding: 1rem;
-                    background-color: aquamarine;
+                    background-color: var(--blue-colour);
 
                     p {
-                        color: blue;
+                        line-height: 1.5rem;
                     }
                 }
             }
@@ -64,11 +82,12 @@ main {
 
 /* #region footer */
 footer {
-    background-color: blueviolet;
+    background-color: var(--moss-colour);
     padding: 1rem;
 
     p {
         text-align: center;
+        color: var(--pearl-colour);
     }
 }
 
