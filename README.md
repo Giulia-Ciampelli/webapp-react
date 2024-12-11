@@ -7,11 +7,13 @@ Una web app per cercare film e recensioni.
 
 *Componenti*
 - Header
+- MovieCard
 - Footer
 
 *Pagine*
 - Homepage
-- Pagina dettaglio libri
+- Pagina lista film
+- Pagina dettaglio film con recensioni
 
 *Contexts*
 - Chiamate API
