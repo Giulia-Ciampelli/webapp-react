@@ -7,7 +7,7 @@ import DefaultLayout from "./pages/DefaultLayout.jsx";
 // pagine
 import HomePage from "./pages/HomePage.jsx";
 import MovieListPage from "./pages/MovieListPage.jsx";
-// import MovieDetailsPage from "./pages/MovieDetailsPage.jsx";
+import MovieDetailsPage from "./pages/MovieDetailsPage.jsx";
 
 // context
 import { APIContextProvider } from "./contexts/APIContext.jsx";
@@ -27,6 +27,7 @@ function App() {
             <Route element={<DefaultLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/films" element={<MovieListPage />} />
+              <Route path="/films/:id" element={<MovieDetailsPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
