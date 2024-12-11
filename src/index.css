@@ -8,6 +8,7 @@
 ul {
     list-style: none;
 }
+
 /* #endregion common */
 
 /* #region header */
@@ -28,14 +29,13 @@ header {
 /* #region main */
 main {
     min-height: 90vh;
-    padding: 2rem 0;
 
     .container {
         width: 90%;
         margin: auto;
 
         h1 {
-            margin-bottom: 2rem;
+            margin: 2rem 0;
         }
 
         .row {
@@ -53,10 +53,6 @@ main {
 
                     p {
                         color: blue;
-                    }
-
-                    h2 {
-                        margin: 1rem;
                     }
                 }
             }
