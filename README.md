@@ -1,8 +1,20 @@
-# React + Vite
+## React movie app
+Una web app per cercare film e recensioni.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Pacchetti*
+- react-router-dom
+- bootstrap-icons?
 
-Currently, two official plugins are available:
+*Componenti*
+- Header
+- Footer
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*Pagine*
+- Homepage
+- Pagina dettaglio libri
+
+*Contexts*
+- Chiamate API
+
+*Ricorda*
+Da usare con il backend nella repo webapp-express (CORS già installato)
