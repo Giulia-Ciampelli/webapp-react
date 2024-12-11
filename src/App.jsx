@@ -10,6 +10,7 @@ import MovieListPage from "./pages/MovieListPage.jsx";
 // import MovieDetailsPage from "./pages/MovieDetailsPage.jsx";
 
 // context
+import { APIContextProvider } from "./contexts/APIContext.jsx";
 
 // stile
 import './App.css';
@@ -20,14 +21,16 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route path="/" element={<HomePage />}/>
-            <Route path="/films" element={<MovieListPage />}/>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <APIContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<DefaultLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/films" element={<MovieListPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </APIContextProvider>
     </>
   )
 }
