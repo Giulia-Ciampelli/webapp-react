@@ -10,13 +10,13 @@ export default function MovieListPage() {
     return (
         <>
             <div className="container">
+                <h1>
+                    All the movies
+                </h1>
                 <div className="row">
-                    <h1>
-                        All the movies
-                    </h1>
 
                     {/* RICORDA: sistema il parametro prima di sclerare, ovviamente ora non funziona */}
-                    {movies.length === 0 ? (<p>Nessun film</p>) : 
+                    {movies.length === 0 ? (<p>Nessun film</p>) :
                         (movies.map((movie) => (
                             <div className="card" key={movie.id}>
                                 <p>
@@ -42,7 +42,7 @@ export default function MovieListPage() {
                                 </p>
                             </div>
                         ))
-                    )}
+                        )}
                     {/* <Link to={`/films/${id}`}>
                         Single Movie
                     </Link> */}

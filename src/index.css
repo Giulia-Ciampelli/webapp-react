@@ -1,1 +1,64 @@
-/* stile globale */
+/* #region common */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* #endregion common */
+
+/* #region header */
+header {
+    padding: 1rem;
+    background-color: azure;
+
+    nav {
+        
+        a {
+            text-decoration: none;
+        }
+    }
+}
+/* #endregion header */
+
+/* #region main */
+main {
+    min-height: 90vh;
+    padding: 2rem 0;
+
+    .container {
+        width: 90%;
+        margin: auto;
+
+        h1 {
+            margin-bottom: 2rem;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+
+            .card {
+                width: calc(100% / 4);
+                padding: 1rem;
+                background-color: aquamarine;
+
+                p {
+                    color: blue;
+                }
+            }
+        }
+    }
+}
+/* #endregion main */
+
+/* #region footer */
+footer {
+    background-color: blueviolet;
+    padding: 1rem;
+
+    p {
+        text-align: center;
+    }
+}
+/* #endregion footer */
