@@ -1,4 +1,11 @@
+import { useContext } from "react";
+
+// context
+import DateFormatContext from "../contexts/DateFormatContext.jsx";
+
 export default function MovieCard({ movie }) {
+    const { formatDate } = useContext(DateFormatContext); // variabile per formattazione data
+
     return (
         <div className="card">
             <p>
@@ -17,10 +24,10 @@ export default function MovieCard({ movie }) {
                 Abstract: {movie.abstract}
             </p>
             <p>
-                Created at: {movie.created_at}
+                Created at: {formatDate(movie.created_at)}
             </p>
             <p>
-                Updated at: {movie.updated_at}
+                Updated at: {formatDate(movie.updated_at)}
             </p>
         </div>
     )

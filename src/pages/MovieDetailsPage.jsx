@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 // context
 import APIContext from "../contexts/APIContext.jsx";
+import DateFormatContext from "../contexts/DateFormatContext.jsx";
 
 // stile
 import style from "../components/MovieDetailsPage.module.css";
@@ -10,6 +11,7 @@ import style from "../components/MovieDetailsPage.module.css";
 export default function MovieDetailsPage() {
     const { movieDetails, fetchFilmById } = useContext(APIContext); // variabile context
     const { id } = useParams(); // variabile params per mostrare solo la card corrispondente
+    const { formatDate } = useContext(DateFormatContext); // variabile per formattazione data
 
     useEffect(() => {
         if (!movieDetails || movieDetails.id !== id) {
@@ -48,10 +50,10 @@ export default function MovieDetailsPage() {
                                 Abstract: {movieDetails.abstract}
                             </p>
                             <p>
-                                Created at: {movieDetails.created_at}
+                                Created at: {formatDate(movieDetails.created_at)}
                             </p>
                             <p>
-                                Updated at: {movieDetails.updated_at}
+                                Updated at: {formatDate(movieDetails.updated_at)}
                             </p>
                         </div>
 

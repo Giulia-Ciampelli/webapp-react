@@ -11,6 +11,7 @@ import MovieDetailsPage from "./pages/MovieDetailsPage.jsx";
 
 // context
 import { APIContextProvider } from "./contexts/APIContext.jsx";
+import { FormatDateProvider } from "./contexts/DateFormatContext.jsx";
 
 // stile
 import './App.css';
@@ -22,15 +23,17 @@ function App() {
   return (
     <>
       <APIContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<DefaultLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/films" element={<MovieListPage />} />
-              <Route path="/films/:id" element={<MovieDetailsPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <FormatDateProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<DefaultLayout />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/films" element={<MovieListPage />} />
+                <Route path="/films/:id" element={<MovieDetailsPage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </FormatDateProvider>
       </APIContextProvider>
     </>
   )
