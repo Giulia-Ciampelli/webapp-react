@@ -36,3 +36,7 @@ button {
         }
     }
 }
+
+.stellinaPienaVuota svg path {
+    fill: var(--blue-colour) !important;
+}
