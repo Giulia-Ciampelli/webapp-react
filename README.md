@@ -3,7 +3,7 @@ Una web app per cercare film e recensioni.
 
 *Pacchetti*
 - react-router-dom
-- bootstrap-icons?
+- fontawesome-icons
 
 *Componenti*
 - Header
