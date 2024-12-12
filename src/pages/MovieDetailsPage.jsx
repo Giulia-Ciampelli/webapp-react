@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 // context
 import APIContext from "../contexts/APIContext.jsx";
@@ -12,6 +12,7 @@ export default function MovieDetailsPage() {
     const { movieDetails, fetchFilmById } = useContext(APIContext); // variabile context
     const { id } = useParams(); // variabile params per mostrare solo la card corrispondente
     const { formatDate } = useContext(DateFormatContext); // variabile per formattazione data
+    const navigate = useNavigate(); // variabile navigate
 
     useEffect(() => {
         if (!movieDetails || movieDetails.id !== id) {
@@ -28,6 +29,9 @@ export default function MovieDetailsPage() {
     return (
         <>
             <div className="container">
+                <button onClick={() => navigate(-1)}>
+                    Torna indietro
+                </button>
                 <h1>
                     {movieDetails.title}
                 </h1>
@@ -86,7 +90,7 @@ export default function MovieDetailsPage() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
