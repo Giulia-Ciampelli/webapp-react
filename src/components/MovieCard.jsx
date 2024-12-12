@@ -9,25 +9,19 @@ export default function MovieCard({ movie }) {
     return (
         <div className="card">
             <p>
-                Title: {movie.title}
+                <strong>Title:</strong> {movie.title}
             </p>
             <p>
-                Director: {movie.director}
+                <strong>Director:</strong> {movie.director}
             </p>
             <p>
-                Genre: {movie.genre}
+                <strong>Genre:</strong> {movie.genre}
             </p>
             <p>
-                Release year: {movie.release_year}
+                <strong>Release year:</strong> {movie.release_year}
             </p>
             <p>
-                Abstract: {movie.abstract}
-            </p>
-            <p>
-                Created at: {formatDate(movie.created_at)}
-            </p>
-            <p>
-                Updated at: {formatDate(movie.updated_at)}
+                <strong>Abstract:</strong> {movie.abstract}
             </p>
         </div>
     )

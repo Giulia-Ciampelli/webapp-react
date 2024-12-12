@@ -5,16 +5,26 @@ button {
     margin-bottom: 1rem;
 }
 
-.cardBottom {
+.card {
 
-    h2 {
-        margin-top: 1.5rem;
+    .cardTop {
+
+        p {
+            margin: .25rem 0;
+        }
     }
 
-    ul {
+    .cardBottom {
 
-        li {
-            margin: 1.5rem 0;
+        h2 {
+            margin-top: 1.5rem;
+        }
+
+        ul {
+
+            li {
+                margin: 1.5rem 0;
+            }
         }
     }
 }

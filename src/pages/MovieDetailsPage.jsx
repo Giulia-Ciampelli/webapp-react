@@ -39,25 +39,16 @@ export default function MovieDetailsPage() {
                     <div className={style.card}>
                         <div className={style.cardTop}>
                             <p>
-                                Title: {movieDetails.title}
+                                <strong>Genre:</strong> {movieDetails.genre}
                             </p>
                             <p>
-                                Director: {movieDetails.director}
+                                <strong>Director:</strong> {movieDetails.director}
                             </p>
                             <p>
-                                Genre: {movieDetails.genre}
+                                <strong>Release year:</strong> {movieDetails.release_year}
                             </p>
                             <p>
-                                Release year: {movieDetails.release_year}
-                            </p>
-                            <p>
-                                Abstract: {movieDetails.abstract}
-                            </p>
-                            <p>
-                                Created at: {formatDate(movieDetails.created_at)}
-                            </p>
-                            <p>
-                                Updated at: {formatDate(movieDetails.updated_at)}
+                                <strong>Abstract:</strong> {movieDetails.abstract}
                             </p>
                         </div>
 
@@ -80,6 +71,9 @@ export default function MovieDetailsPage() {
                                             </p>
                                             <p>
                                                 Vote: <strong>{review.vote}</strong>
+                                            </p>
+                                            <p>
+                                                <strong>Updated at:</strong> {formatDate(review.updated_at)}
                                             </p>
                                         </li>
                                     ))}
