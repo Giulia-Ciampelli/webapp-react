@@ -8,6 +8,11 @@ import DateFormatContext from "../contexts/DateFormatContext.jsx";
 // stile
 import style from "../components/MovieDetailsPage.module.css";
 
+// icone
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar as faStarFull } from "@fortawesome/free-solid-svg-icons"; // stella piena
+import { faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons"; // stella vuota
+
 export default function MovieDetailsPage() {
     const { movieDetails, fetchFilmById } = useContext(APIContext); // variabile context
     const { id } = useParams(); // variabile params per mostrare solo la card corrispondente
@@ -59,24 +64,39 @@ export default function MovieDetailsPage() {
                             </h2>
                             {movieDetails.reviews && movieDetails.reviews.length > 0 ? (
                                 <ul>
-                                    {movieDetails.reviews.map((review) => (
-                                        <li key={review.id}>
-                                            <p>
-                                                <strong>
-                                                    {review.name} says:
-                                                </strong>
-                                            </p>
-                                            <p>
-                                                {review.text}
-                                            </p>
-                                            <p>
-                                                Vote: <strong>{review.vote}</strong>
-                                            </p>
-                                            <p>
-                                                <strong>Updated at:</strong> {formatDate(review.updated_at)}
-                                            </p>
-                                        </li>
-                                    ))}
+                                    {movieDetails.reviews.map((review) => {
+                                        const totalVote = review.vote; // variabile voto totale
+                                        const emptyStars = 5 - totalVote; // variabile voto restante
+
+                                        return (
+                                            <li key={review.id}>
+                                                <p>
+                                                    <strong>
+                                                        {review.name} says:
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    {review.text}
+                                                </p>
+                                                <p>
+                                                    <span><strong>Vote:</strong></span>
+
+                                                    {/* stelle piene */}
+                                                    {Array.from({ length: totalVote }).map((_, index) => (
+                                                        <FontAwesomeIcon key={index} icon={faStarFull} className={style.starIcon} />
+                                                    ))}
+
+                                                    {/* stelle vuote */}
+                                                    {Array.from({ length: emptyStars }).map((_, index) => (
+                                                        <FontAwesomeIcon key={index} icon={faStarEmpty} className={style.starIcon} />
+                                                    ))}
+                                                </p>
+                                                <p>
+                                                    <strong>Updated at:</strong> {formatDate(review.updated_at)}
+                                                </p>
+                                            </li>
+                                        )
+                                    })}
                                 </ul>
                             ) : (
                                 <p>No reviews yet.</p>
