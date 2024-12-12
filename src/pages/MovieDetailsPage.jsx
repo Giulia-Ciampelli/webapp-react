@@ -83,7 +83,7 @@ export default function MovieDetailsPage() {
 
                                                     {/* stelle piene */}
                                                     {Array.from({ length: totalVote }).map((_, index) => (
-                                                        <span key={index} className={style.stellinaPiena}><FontAwesomeIcon key={index} icon={faStarFull} /></span>
+                                                        <span key={index} className={style.stellinaPienaVuota}><FontAwesomeIcon key={index} icon={faStarFull} /></span>
                                                     ))}
 
                                                     {/* stelle vuote */}
