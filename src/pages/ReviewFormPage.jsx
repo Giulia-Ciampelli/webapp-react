@@ -31,7 +31,7 @@ export default function ReviewFormPage() {
             setSuccess('Grazie per la tua recensione! Verrai reindirizzato alla pagina precedente')
 
             // timer
-            setInterval(() => {
+            setTimeout(() => {
                 setSuccess(null);
                 navigate(-1);
             }, 5000);

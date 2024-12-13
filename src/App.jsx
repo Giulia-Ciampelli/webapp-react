@@ -31,7 +31,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/films" element={<MovieListPage />} />
                 <Route path="/films/:id" element={<MovieDetailsPage />} />
-                <Route path="/films/reviews/:id" element={<ReviewFormPage />} />
+                <Route path="/films/reviews/:movieId" element={<ReviewFormPage />} />
               </Route>
             </Routes>
           </BrowserRouter>
