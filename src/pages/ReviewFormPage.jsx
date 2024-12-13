@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 // icone
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,35 +7,64 @@ import { faStar as faStarFull } from "@fortawesome/free-solid-svg-icons"; // ste
 import { faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons"; // stella vuota
 
 export default function ReviewFormPage() {
-    const [username, setUsername] = useState();
+    const [username, setUsername] = useState(''); // RICORDA: le stringhe vuote in campi form evitano il warning dopo, perchè devono cambiare!
     const [rating, setRating] = useState(0);
-    const [comment, setComment] = useState();
+    const [comment, setComment] = useState('');
     const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+    const navigate = useNavigate();
+    const { movieId } = useParams();
 
+    // funzione per la validazione dati
+    const HandleValidation = () => {
+        if (!username || !comment || rating == 0) {
+            setError('Please fill out all the fields!');
+            return false;
+        }
+        setError(null);
+        return true;
+    }
+
+    // funzione per il setSuccess
+    const HandleSuccess = (data) => {
+        if (data.success) {
+            setSuccess('Grazie per la tua recensione! Verrai reindirizzato alla pagina precedente')
+
+            // timer
+            setInterval(() => {
+                setSuccess(null);
+                navigate(-1);
+            }, 5000);
+        }
+    }
+
+    // funzione per submit form
     function HandleSubmit(e) {
         e.preventDefault();
 
         // validazione dati
-        if (!username || !comment || rating == 0) {
-            setError('Please fill out all the fields!');
+        if (!HandleValidation()) return;
+
+        // preparazione dati
+        const formData = {
+            name: username,
+            text: comment,
+            vote: rating
         }
-        else {
-            const formData = {
-                name: username,
-                text: comment,
-                vote: rating
+
+        console.log(formData);
+
+        // funzione fetch
+        fetch(`http://localhost:3000/films/reviews/${movieId}`, {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                "Content-Type": "application/json",
             }
-
-            console.log(formData);
-
-            // mandalo all'id del film corretto
-        }
-
-        // messaggio di successo
-
-        // timer?
-
-        // navigate - 1
+        })
+            .then((res) => res.json())
+            .then(HandleSuccess) // richiamo funzione setSuccess
+            .catch((err) => console.log(err))
     }
 
 
