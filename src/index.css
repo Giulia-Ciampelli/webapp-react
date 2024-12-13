@@ -22,6 +22,17 @@ a {
     --dark-colour: #131112;
 }
 
+.button {
+    background-color: var(--blue-colour);
+    border: none;
+    padding: .25rem;
+    margin-bottom: 1rem;
+}
+
+.stellinaPienaVuota svg path {
+    fill: var(--blue-colour) !important;
+}
+
 /* #endregion common */
 
 /* #region header */

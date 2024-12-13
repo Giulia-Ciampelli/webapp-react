@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 // context
 import APIContext from "../contexts/APIContext.jsx";
@@ -18,12 +18,19 @@ export default function MovieDetailsPage() {
     const { id } = useParams(); // variabile params per mostrare solo la card corrispondente
     const { formatDate } = useContext(DateFormatContext); // variabile per formattazione data
     const navigate = useNavigate(); // variabile navigate
+    const [movieId, setMovieId] = useState(null); // variabile per settare movieDetails.reviews.movie_id
 
     useEffect(() => {
         if (!movieDetails || movieDetails.id !== id) {
             fetchFilmById(id);
         }
     }, [id])
+
+    useEffect(() => {
+        if (movieDetails?.reviews && movieDetails.reviews.length > 0){
+            setMovieId(movieDetails.reviews[0].movie_id);
+        }
+    }, [movieDetails])
 
 
     // ATTENZIONE: non rimuovere questa condizionale o quella su useEffect, se rimosse il componente funziona per circa un uso e poi smette di riconoscere movieDetails
@@ -34,8 +41,8 @@ export default function MovieDetailsPage() {
     return (
         <>
             <div className="container">
-                <button onClick={() => navigate(-1)}>
-                    Torna indietro
+                <button onClick={() => navigate(-1)} className={style.button}>
+                    Back to movies
                 </button>
                 <h1>
                     {movieDetails.title}
@@ -83,12 +90,12 @@ export default function MovieDetailsPage() {
 
                                                     {/* stelle piene */}
                                                     {Array.from({ length: totalVote }).map((_, index) => (
-                                                        <span key={index} className={style.stellinaPienaVuota}><FontAwesomeIcon key={index} icon={faStarFull} /></span>
+                                                        <span key={index} className={style.stellinaPienaVuota}><FontAwesomeIcon icon={faStarFull} /></span>
                                                     ))}
 
                                                     {/* stelle vuote */}
                                                     {Array.from({ length: emptyStars }).map((_, index) => (
-                                                        <span key={index} className={style.stellinaPienaVuota}><FontAwesomeIcon key={index} icon={faStarEmpty} /></span>
+                                                        <span key={index} className={style.stellinaPienaVuota}><FontAwesomeIcon icon={faStarEmpty} /></span>
                                                     ))}
                                                 </p>
                                                 <p>
@@ -101,6 +108,9 @@ export default function MovieDetailsPage() {
                             ) : (
                                 <p>No reviews yet.</p>
                             )}
+                            <Link to={`/films/reviews/${movieId}`} className={style.button}>
+                                Add a review
+                            </Link>
                         </div>
                     </div>
                 </div>
