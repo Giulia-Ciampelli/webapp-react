@@ -24,4 +24,5 @@ Da usare con il backend nella repo webapp-express (CORS già installato)
 
 *Todo*
 - Crea un form per mettere le recensioni (anche dal backend)
+- valida i dati form anche dal lato backend
 - Form anche per mettere libri?
