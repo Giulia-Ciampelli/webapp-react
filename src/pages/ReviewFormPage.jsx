@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faStarFull } from "@fortawesome/free-solid-svg-icons"; // stella piena
 import { faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons"; // stella vuota
 
+// stile
+import style from '../components/ReviewFormPage.module.css';
+
 export default function ReviewFormPage() {
     const [username, setUsername] = useState(''); // RICORDA: le stringhe vuote in campi form evitano il warning dopo, perchè devono cambiare!
     const [rating, setRating] = useState(0);
@@ -70,21 +73,40 @@ export default function ReviewFormPage() {
 
     return (
         <div className="container">
+            <h1>
+                Leaver your review
+            </h1>
             <div className="row">
-                <form onSubmit={HandleSubmit} className="card">
+                <form onSubmit={HandleSubmit} className={style.card}>
 
                     {/* campo username */}
-                    <input name="user" type="text" placeholder="Your username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <div className={style.user}>
+                        <label htmlFor="user">
+                            Insert your username here
+                        </label>
+                        <input name="user" id="user" type="text" placeholder="Your username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    </div>
 
                     {/* campo commento */}
-                    <textarea name="comment" id="comment" placeholder="Your comment" value={comment} onChange={(e) => setComment(e.target.value)}>
-                    </textarea>
+                    <div className={style.comment}>
+                        <label htmlFor="comment">
+                            Insert your comment here
+                        </label>
+                        <textarea name="comment" id="comment" placeholder="Your comment" value={comment} onChange={(e) => setComment(e.target.value)}>
+                        </textarea>
+                    </div>
 
                     {/* campo voto */}
-                    {[1, 2, 3, 4, 5].map(star => <span key={star} className="stellinaPienaVuota">
-                        <FontAwesomeIcon icon={star <= rating ? faStarFull : faStarEmpty} onClick={() => setRating(star)} /></span>)}
+                    <div className={style.vote}>
+                        <label htmlFor="number-vote">
+                            Insert your vote <br />
+                        </label>
+                        {[1, 2, 3, 4, 5].map(star => <span key={star} className="stellinaPienaVuota" id="number-vote">
+                            <FontAwesomeIcon icon={star <= rating ? faStarFull : faStarEmpty} onClick={() => setRating(star)} />
+                        </span>)}
+                    </div>
 
-                    <div className="error">
+                    <div className={style.error}>
                         <button type="submit" className="button">
                             Send
                         </button>
