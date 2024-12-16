@@ -28,6 +28,10 @@
     }
 
     .error {
-        color: red;
+
+        span {
+            margin-left: .5rem;
+            color: red;
+        }
     }
 }

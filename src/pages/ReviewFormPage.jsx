@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 // icone
@@ -31,7 +31,13 @@ export default function ReviewFormPage() {
     // funzione per il setSuccess
     const HandleSuccess = (data) => {
         if (data.success) {
-            setSuccess('Grazie per la tua recensione! Verrai reindirizzato alla pagina precedente')
+            setSuccess('Grazie per la tua recensione! A breve, verrai reindirizzato alla pagina precedente.')
+        }
+    }
+
+    // useEffect per messaggio di successo
+    useEffect(() => {
+        if (success) {
 
             // timer
             setTimeout(() => {
@@ -39,7 +45,7 @@ export default function ReviewFormPage() {
                 navigate(-1);
             }, 5000);
         }
-    }
+    }, [success, navigate])
 
     // funzione per submit form
     function HandleSubmit(e) {
@@ -58,7 +64,7 @@ export default function ReviewFormPage() {
         console.log(formData);
 
         // funzione fetch
-        fetch(`http://localhost:3000/films/reviews/${movieId}`, {
+        fetch(`${url}/reviews/${movieId}`, {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
