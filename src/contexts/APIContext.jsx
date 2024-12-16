@@ -12,6 +12,10 @@ export const APIContextProvider = ({ children }) => {
 
     // fetch per tutti i film
     useEffect(() => {
+
+        // caricamento
+        setLoading(true);
+
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -27,6 +31,10 @@ export const APIContextProvider = ({ children }) => {
 
     // fetch per film per id
     const fetchFilmById = (id) => {
+
+        // caricamento
+        setLoading(true);
+
         fetch(`${url}/${id}`)
             .then(res => res.json())
             .then(data => {
