@@ -17,6 +17,7 @@ export default function ReviewFormPage() {
     const [success, setSuccess] = useState(null);
     const navigate = useNavigate();
     const { movieId } = useParams();
+    const url = import.meta.env.VITE_URL;
 
     // funzione per la validazione dati
     const HandleValidation = () => {
@@ -117,6 +118,10 @@ export default function ReviewFormPage() {
                             Send
                         </button>
                         {error && <span>{error}</span>}
+                    </div>
+
+                    <div className={style.success}>
+                        {success && <span>{success}</span>}
                     </div>
                 </form>
             </div>

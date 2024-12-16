@@ -34,4 +34,11 @@
             color: red;
         }
     }
+
+    .success {
+
+        span {
+            color: green;
+        }
+    }
 }
