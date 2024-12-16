@@ -13,12 +13,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faStarFull } from "@fortawesome/free-solid-svg-icons"; // stella piena
 import { faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons"; // stella vuota
 
+// componenti
+import Loader from "../components/Loader.jsx";
+
 export default function MovieDetailsPage() {
     const { movieDetails, fetchFilmById } = useContext(APIContext); // variabile context
     const { id } = useParams(); // variabile params per mostrare solo la card corrispondente
     const { formatDate } = useContext(DateFormatContext); // variabile per formattazione data
     const navigate = useNavigate(); // variabile navigate
     const [movieId, setMovieId] = useState(null); // variabile per settare movieDetails.reviews.movie_id
+    const { loading } = useContext(APIContext); // variabile di caricamento
 
     useEffect(() => {
         if (!movieDetails || movieDetails.id !== id) {
@@ -27,7 +31,7 @@ export default function MovieDetailsPage() {
     }, [id])
 
     useEffect(() => {
-        if (movieDetails?.reviews && movieDetails.reviews.length > 0){
+        if (movieDetails?.reviews && movieDetails.reviews.length > 0) {
             setMovieId(movieDetails.reviews[0].movie_id);
         }
     }, [movieDetails])
@@ -35,7 +39,7 @@ export default function MovieDetailsPage() {
 
     // ATTENZIONE: non rimuovere questa condizionale o quella su useEffect, se rimosse il componente funziona per circa un uso e poi smette di riconoscere movieDetails
     if (!movieDetails) {
-        return <p>Loading movie details...</p>
+        return <Loader />
     }
 
     return (

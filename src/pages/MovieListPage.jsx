@@ -1,20 +1,15 @@
 import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 // context
 import APIContext from "../contexts/APIContext.jsx";
 
 // componenti
-import MovieCard from "../components/MovieCard.jsx";
 import Loader from "../components/Loader.jsx";
+import MovieCard from "../components/MovieCard.jsx";
 
 export default function MovieListPage() {
     const { movies, loading } = useContext(APIContext); // variabile context
-
-    // useEffect di test (non c'è log, il loader viene caricato dopo la movie card)
-    useEffect(() => {
-        console.log('Stato di caricamento:', loading);
-    }, [loading])
 
     return (
         <>
