@@ -23,6 +23,7 @@ Una web app per cercare film e recensioni.
 Da usare con il backend nella repo webapp-express (CORS già installato)
 
 *Todo*
-- Crea un form per mettere le recensioni (anche dal backend)
-- valida i dati form anche dal lato backend
-- Form anche per mettere libri?
+- Valida i dati form anche dal lato backend
+- Metti un loader per connessioni lente
+- Pondera se ha senso che il formattatore di date sia su un context
+- Risolvi il problema con il setSuccess
