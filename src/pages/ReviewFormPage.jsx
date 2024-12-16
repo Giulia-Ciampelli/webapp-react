@@ -29,25 +29,6 @@ export default function ReviewFormPage() {
         return true;
     }
 
-    // funzione per il setSuccess
-    const HandleSuccess = (data) => {
-        if (data.success) {
-            setSuccess('Grazie per la tua recensione! A breve, verrai reindirizzato alla pagina precedente.')
-        }
-    }
-
-    // useEffect per messaggio di successo
-    useEffect(() => {
-        if (success) {
-
-            // timer
-            setTimeout(() => {
-                setSuccess(null);
-                navigate(-1);
-            }, 5000);
-        }
-    }, [success, navigate])
-
     // funzione per submit form
     function HandleSubmit(e) {
         e.preventDefault();
@@ -77,6 +58,24 @@ export default function ReviewFormPage() {
             .catch((err) => console.log(err))
     }
 
+    // funzione per il setSuccess
+    const HandleSuccess = (data) => {
+        if (data.success) {
+            setSuccess('Thank you for your review! You\'ll be sent to the previous page in a couple of seconds.')
+        }
+    }
+
+    // useEffect per messaggio di successo
+    useEffect(() => {
+        if (success) {
+
+            // timer
+            setTimeout(() => {
+                setSuccess(null);
+                navigate(-1);
+            }, 3000);
+        }
+    }, [success, navigate])
 
     return (
         <div className="container">
@@ -105,14 +104,15 @@ export default function ReviewFormPage() {
 
                     {/* campo voto */}
                     <div className={style.vote}>
-                        <label htmlFor="number-vote">
+                        <span>
                             Insert your vote <br />
-                        </label>
-                        {[1, 2, 3, 4, 5].map(star => <span key={star} className="stellinaPienaVuota" id="number-vote">
+                        </span>
+                        {[1, 2, 3, 4, 5].map(star => <span key={star} className="stellinaPienaVuota">
                             <FontAwesomeIcon icon={star <= rating ? faStarFull : faStarEmpty} onClick={() => setRating(star)} />
                         </span>)}
                     </div>
 
+                    {/* sezione bottone e messaggio errore */}
                     <div className={style.error}>
                         <button type="submit" className="button">
                             Send
@@ -120,6 +120,7 @@ export default function ReviewFormPage() {
                         {error && <span>{error}</span>}
                     </div>
 
+                    {/* sezione messaggio successo */}
                     <div className={style.success}>
                         {success && <span>{success}</span>}
                     </div>

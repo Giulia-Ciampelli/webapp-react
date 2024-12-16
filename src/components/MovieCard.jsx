@@ -1,10 +1,4 @@
-import { useContext } from "react";
-
-// context
-import DateFormatContext from "../contexts/DateFormatContext.jsx";
-
 export default function MovieCard({ movie }) {
-    const { formatDate } = useContext(DateFormatContext); // variabile per formattazione data
 
     return (
         <div className="card">

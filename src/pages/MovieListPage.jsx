@@ -6,12 +6,14 @@ import APIContext from "../contexts/APIContext.jsx";
 
 // componenti
 import MovieCard from "../components/MovieCard.jsx";
+import Loader from "../components/Loader.jsx";
 
 export default function MovieListPage() {
-    const { movies } = useContext(APIContext); // variabile context
+    const { movies, loading } = useContext(APIContext); // variabile context
 
     return (
         <>
+            {loading && <Loader />}
             <div className="container">
                 <h1>
                     All the movies
